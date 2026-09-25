@@ -2,7 +2,7 @@ const express = require("express")
 const app = express()
 const cors = require('cors')
 
-app.use(cors())
+// app.use(cors())
 app.use(express.json())//JSON parser it allows access to the data sent with the request(POST request)
 app.use(express.static('dist')) 
 
