@@ -6,7 +6,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node index.js",
-    "dev": "node --watch index.js"
+    "dev": "node --watch index.js",
+    "build:ui": "if (Test-Path dist) { Remove-Item -Recurse -Force dist }; cd ../project-notebook_frontend; npm install; npm run build; Copy-Item -Recurse dist ../project-notebook_backend",
+    "deploy:full": "npm run build:ui; cd ../project-notebook_backend; git add .; git commit -m 'uibuild'; git push"
   },
   "author": "Garry Newby",
   "license": "MIT",
