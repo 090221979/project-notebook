@@ -3,16 +3,17 @@
   "version": "1.0.0",
   "description": "node project for fullstackopen",
   "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.js",
-    "dev": "node --watch index.js",
-    "build:ui": "if (Test-Path dist) { Remove-Item -Recurse -Force dist }; cd ../project-notebook_frontend; npm install; npm run build; Copy-Item -Recurse dist ../project-notebook_backend",
-    "deploy:full": "npm run build:ui; cd ../project-notebook_backend; git add .; git commit -m 'uibuild'; git push"
-  },
-  "author": "Garry Newby",
+"scripts": {
+  "test": "echo \"Error: no test specified\" && exit 1",
+  "start": "node index.js",
+  "dev": "node --watch index.js",
+  "build:ui": "powershell -Command \"if (Test-Path dist) { Remove-Item -Recurse -Force dist }; cd ../project-notebook_frontend; npm install; npm run build; cd ../project-notebook_backend; Copy-Item -Recurse ../project-notebook_frontend/dist .\"",
+  "deploy:full": "npm run build:ui && git add . && git commit -m uibuild && git push"
+},
+  "author" :"Garry Newby",
   "license": "MIT",
   "dependencies": {
+    "cors": "^2.8.6",
     "express": "^5.2.1"
   }
 }
